@@ -1,11 +1,13 @@
 var gulp = require('gulp');
 var nodemon = require('gulp-nodemon');
-var gulpConfiguration = require('./gulpconfig');
+var gulpConfiguration = require('./gulpconfig.js');
+var typescriptJson = require('./tsconfig.json');
 var sourcemaps = require('gulp-sourcemaps');
 var ts = require('gulp-typescript');
 var plumber = require('gulp-plumber');
 var jshint = require('gulp-jshint');
 
+console.log(gulpConfiguration.Files.TypeScriptFiles);
 
 gulp.task('typescript', function() {
 
@@ -14,20 +16,8 @@ gulp.task('typescript', function() {
 
     gulp.src(gulpConfiguration.Files.TypeScriptFiles)
         .pipe(plumber({}))
-        .pipe(ts({              
-  
-    "target": "es6",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "removeComments": false,
-    "noImplicitAny": false,    
-    "noExternalResolve": true
-
-    
-}))
+        .pipe(ts(typescriptJson.compilerOptions))
+        .pipe(gulp.dest(gulpConfiguration.Files.AppRoot))
        
 });
 

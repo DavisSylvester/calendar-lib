@@ -16,7 +16,7 @@ var CSSRoot = AssetsRoot  + 'css/';
 var CSSFiles = CSSRoot  + '**/*.css';
 var CSSMapRoot = CSSRoot;
 
-var TypeScriptRoot = SrcRoot + 'assets/ts/';
+var TypeScriptRoot = SrcRoot;
 var TypeScriptAppRoot =  AssetsRoot + 'js/';
 var TypeScriptFiles = TypeScriptRoot + '**/*.ts';
 

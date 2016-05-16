@@ -1,0 +1,39 @@
+{
+	"rules": {
+		"no-unused-expression": true,
+		"no-unreachable": true,
+		"no-duplicate-variable": true,
+		"no-duplicate-key": true,
+		"no-unused-variable": true,
+		"curly": true,
+        "comment-format": [true, "check-space"],
+        "max-line-length": [true, 100],
+        "member-access": true,
+		"class-name": true,
+		"semicolon": [true, "always"],
+		"triple-equals": [true, "allow-null-check"],
+        "no-unexternalized-strings": [
+			true,
+			{
+				"signatures": ["localize", "nls.localize"],
+				"keyIndex": 0,
+				"messageIndex": 1
+			}
+		],
+        
+        "no-string-literal": true,
+        "no-trailing-whitespace": true,
+        "no-use-before-declare": true,
+        "no-var-keyword": true,
+        "quotemark": [true, "double", "avoid-escape"],
+        "variable-name": false,
+        "whitespace": [
+                        true,
+                            "check-branch",
+                            "check-decl",
+                            "check-operator",
+                            "check-separator",
+                            "check-type"
+                      ]
+	}
+}
