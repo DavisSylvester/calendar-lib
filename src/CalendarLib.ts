@@ -6,9 +6,9 @@ export class Calendar{
     private currentYear: number;
     private currentMonth: number;
     private numberOfDaysinMonth: number;
-    private firstDayOfMonth: number;
-    
+    private firstDayOfMonth: number;    
     private WeekCalendarData: Array<number> = new Array<number>();;
+    
     public FullCalendarData: Array<Array<number>> = new Array<Array<number>>();
             
     constructor(year?: number, month?: number ){        
@@ -27,7 +27,7 @@ export class Calendar{
             this.currentMonth = month;
         }
         this.currentCalendarDate = new Date(this.currentYear, this.currentMonth, 1);
-        console.log('Working Month: ' + this.currentCalendarDate);
+        // console.log('Working Month: ' + this.currentCalendarDate);
         this.numberOfDaysinMonth = this.GetNumberOfDaysInMonth(this.currentYear, this.currentMonth);
         this.firstDayOfMonth = this.GetFirstDayOfMonth();
         
@@ -45,7 +45,7 @@ export class Calendar{
         return day;
     }
     
-    BuildWeekCalendar():Array<number>{
+    BuildWeekCalendar():Array<Array<number>>{
         let totalDaysInWeek = 7;
         let padding = 0;
         let dayCounter = 1;
@@ -92,7 +92,7 @@ export class Calendar{
        }
        
        
-       return this.WeekCalendarData;
+       return this.FullCalendarData;
     }
     
     
