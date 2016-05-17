@@ -31,7 +31,7 @@ export class Calendar{
         this.numberOfDaysinMonth = this.GetNumberOfDaysInMonth(this.currentYear, this.currentMonth);
         this.firstDayOfMonth = this.GetFirstDayOfMonth();
         
-        this.BuildWeekCalendar();
+        this.FullCalendarData = this.BuildWeekCalendar();
     }
     
     
