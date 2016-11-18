@@ -22,7 +22,8 @@ export class Calendar{
         
         if(month === undefined){
             month = this.today.getMonth();
-            this.currentMonth = month;
+            this.currentMonth = month - 1;
+
         }else{
             this.currentMonth = month;
         }
@@ -99,3 +100,9 @@ export class Calendar{
     
     
 }
+
+let app = new Calendar(2016, 10);
+
+console.log(app.FullCalendarData);
+
+
