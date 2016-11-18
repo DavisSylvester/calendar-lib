@@ -13,16 +13,16 @@ var Calendar = (function () {
         }
         if (month === undefined) {
             month = this.today.getMonth();
-            this.currentMonth = month;
+            this.currentMonth = month - 1;
         }
         else {
-            this.currentMonth = month;
+            this.currentMonth = month - 1;
         }
         this.currentCalendarDate = new Date(this.currentYear, this.currentMonth, 1);
-        console.log('Working Month: ' + this.currentCalendarDate);
+        // console.log('Working Month: ' + this.currentCalendarDate);
         this.numberOfDaysinMonth = this.GetNumberOfDaysInMonth(this.currentYear, this.currentMonth);
         this.firstDayOfMonth = this.GetFirstDayOfMonth();
-        this.BuildWeekCalendar();
+        this.FullCalendarData = this.BuildWeekCalendar();
     }
     ;
     Calendar.prototype.GetNumberOfDaysInMonth = function (year, month) {
@@ -72,8 +72,9 @@ var Calendar = (function () {
                 this.FullCalendarData[this.FullCalendarData.length - 1].push(0);
             }
         }
-        return this.WeekCalendarData;
+        return this.FullCalendarData;
     };
     return Calendar;
 }());
 exports.Calendar = Calendar;
+//# sourceMappingURL=CalendarLib.js.map

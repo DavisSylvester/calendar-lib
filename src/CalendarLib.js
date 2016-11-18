@@ -16,7 +16,7 @@ var Calendar = (function () {
             this.currentMonth = month - 1;
         }
         else {
-            this.currentMonth = month;
+            this.currentMonth = month - 1;
         }
         this.currentCalendarDate = new Date(this.currentYear, this.currentMonth, 1);
         // console.log('Working Month: ' + this.currentCalendarDate);
