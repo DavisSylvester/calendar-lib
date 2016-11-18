@@ -101,8 +101,6 @@ export class Calendar{
     
 }
 
-let app = new Calendar(2016, 10);
 
-console.log(app.FullCalendarData);
 
 

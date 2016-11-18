@@ -77,6 +77,4 @@ var Calendar = (function () {
     return Calendar;
 }());
 exports.Calendar = Calendar;
-var app = new Calendar(2016, 10);
-console.log(app.FullCalendarData);
 //# sourceMappingURL=CalendarLib.js.map
