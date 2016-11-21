@@ -1,3 +1,5 @@
+import { Month } from "./index";
+
 export class Calendar{
     
     private today: Date = new Date();
@@ -7,7 +9,8 @@ export class Calendar{
     private currentMonth: number;
     private numberOfDaysinMonth: number;
     private firstDayOfMonth: number;    
-    private WeekCalendarData: Array<number> = new Array<number>();;
+    private WeekCalendarData: Array<number> = new Array<number>();
+    public MonthName: string;
     
     public FullCalendarData: Array<Array<number>> = new Array<Array<number>>();
             
@@ -23,9 +26,11 @@ export class Calendar{
         if(month === undefined){
             month = this.today.getMonth();
             this.currentMonth = month - 1;
+            this.MonthName = Month[this.currentMonth];
 
         }else{
             this.currentMonth = month - 1;
+            this.MonthName = Month[this.currentMonth];
         }
         this.currentCalendarDate = new Date(this.currentYear, this.currentMonth, 1);
         // console.log('Working Month: ' + this.currentCalendarDate);
