@@ -15,17 +15,18 @@ var Calendar = (function () {
         if (month === undefined) {
             month = this.today.getMonth();
             this.currentMonth = month - 1;
-            this.MonthName = index_1.Month[this.currentMonth];
+            this.MonthName = index_1.Month[month - 1];
         }
         else {
             this.currentMonth = month - 1;
-            this.MonthName = index_1.Month[this.currentMonth];
+            this.MonthName = index_1.Month[month - 1];
         }
         this.currentCalendarDate = new Date(this.currentYear, this.currentMonth, 1);
         // console.log('Working Month: ' + this.currentCalendarDate);
         this.numberOfDaysinMonth = this.GetNumberOfDaysInMonth(this.currentYear, this.currentMonth);
         this.firstDayOfMonth = this.GetFirstDayOfMonth();
         this.FullCalendarData = this.BuildWeekCalendar();
+        // this.MonthName = Month[month - 1];
     }
     Calendar.prototype.GetNumberOfDaysInMonth = function (year, month) {
         var x = new Date(year, month + 1, 0);

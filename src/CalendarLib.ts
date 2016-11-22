@@ -26,11 +26,11 @@ export class Calendar{
         if(month === undefined){
             month = this.today.getMonth();
             this.currentMonth = month - 1;
-            this.MonthName = Month[this.currentMonth];
+            this.MonthName = Month[month - 1];
 
         }else{
             this.currentMonth = month - 1;
-            this.MonthName = Month[this.currentMonth];
+            this.MonthName = Month[month - 1];
         }
         this.currentCalendarDate = new Date(this.currentYear, this.currentMonth, 1);
         // console.log('Working Month: ' + this.currentCalendarDate);
@@ -38,6 +38,7 @@ export class Calendar{
         this.firstDayOfMonth = this.GetFirstDayOfMonth();
         
         this.FullCalendarData = this.BuildWeekCalendar();
+        // this.MonthName = Month[month - 1];
     }
     
     
@@ -101,7 +102,9 @@ export class Calendar{
        return this.FullCalendarData;
     }
     
-    
+    Advance(): Calendar {
+        
+    }
     
     
 }
