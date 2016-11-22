@@ -77,7 +77,23 @@ var Calendar = (function () {
         }
         return this.FullCalendarData;
     };
-    Calendar.prototype.Advance = function () {
+    Calendar.prototype.Forward = function () {
+        var curMonth = this.currentMonth++;
+        var curYear = this.currentYear;
+        if (curMonth > 12) {
+            curMonth = 0;
+            curYear++;
+        }
+        return new Calendar(curYear, curMonth);
+    };
+    Calendar.prototype.Reverse = function () {
+        var curMonth = this.currentMonth--;
+        var curYear = this.currentYear;
+        if (curMonth < 0) {
+            curMonth = 12;
+            curYear--;
+        }
+        return new Calendar(curYear, curMonth);
     };
     return Calendar;
 }());

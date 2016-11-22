@@ -102,8 +102,30 @@ export class Calendar{
        return this.FullCalendarData;
     }
     
-    Advance(): Calendar {
-        
+    Forward(): Calendar {
+        let curMonth = this.currentMonth++;
+        let curYear = this.currentYear;
+
+
+        if (curMonth > 12){
+            curMonth = 0;
+            curYear++;
+        }
+
+        return new Calendar(curYear, curMonth);
+    }
+
+    Reverse(): Calendar { 
+        let curMonth = this.currentMonth--;
+        let curYear = this.currentYear;
+
+
+        if (curMonth < 0){
+            curMonth = 12;
+            curYear--;
+        }
+
+        return new Calendar(curYear, curMonth);
     }
     
     
