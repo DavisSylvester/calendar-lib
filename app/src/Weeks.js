@@ -1,4 +1,5 @@
 "use strict";
+var DaysOfWeek;
 (function (DaysOfWeek) {
     DaysOfWeek[DaysOfWeek["SUNDAY"] = 0] = "SUNDAY";
     DaysOfWeek[DaysOfWeek["MONDAY"] = 1] = "MONDAY";
@@ -7,6 +8,5 @@
     DaysOfWeek[DaysOfWeek["THURSDAY"] = 4] = "THURSDAY";
     DaysOfWeek[DaysOfWeek["FRIDAY"] = 5] = "FRIDAY";
     DaysOfWeek[DaysOfWeek["SATURDAY"] = 6] = "SATURDAY";
-})(exports.DaysOfWeek || (exports.DaysOfWeek = {}));
-var DaysOfWeek = exports.DaysOfWeek;
+})(DaysOfWeek = exports.DaysOfWeek || (exports.DaysOfWeek = {}));
 //# sourceMappingURL=Weeks.js.map

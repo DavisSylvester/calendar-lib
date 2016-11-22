@@ -1,4 +1,5 @@
 "use strict";
+var Month;
 (function (Month) {
     Month[Month["JANUARY"] = 0] = "JANUARY";
     Month[Month["FEBRUARY"] = 1] = "FEBRUARY";
@@ -12,6 +13,5 @@
     Month[Month["OCTOBER"] = 9] = "OCTOBER";
     Month[Month["NOVEMBER"] = 10] = "NOVEMBER";
     Month[Month["DECEMBER"] = 11] = "DECEMBER";
-})(exports.Month || (exports.Month = {}));
-var Month = exports.Month;
+})(Month = exports.Month || (exports.Month = {}));
 //# sourceMappingURL=Months.js.map
