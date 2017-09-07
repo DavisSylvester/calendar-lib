@@ -1,6 +1,6 @@
 import { Month } from "./index";
 
-export class Calendar{
+export class Calendar {
     
     private today: Date = new Date();
     private currentDate: Date;

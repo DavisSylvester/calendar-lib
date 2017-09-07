@@ -1,10 +1,11 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
+        "module": "system",
         "target": "es5",
         "noImplicitAny": false,
-        "sourceMap": true,
-        "outDir": "app/"
+        "sourceMap": true,        
+        "outDir": "app/",
+        "rootDir": "./src"
     },
     "exclude": [
         "node_modules"
