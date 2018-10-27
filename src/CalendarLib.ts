@@ -110,7 +110,7 @@ export class Calendar {
     }
 
     public forward(): Calendar {
-        let curMonth = this.currentMonth++;
+        let curMonth = this.currentMonth + 2;
         let curYear = this.currentYear;
 
 
@@ -123,7 +123,7 @@ export class Calendar {
     }
 
     public previous(): Calendar {
-        let curMonth = this.currentMonth--;
+        let curMonth = this.currentMonth - 2;
         let curYear = this.currentYear;
 
 

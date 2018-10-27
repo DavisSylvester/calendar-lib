@@ -88,7 +88,7 @@
             return this.FullCalendarData;
         };
         Calendar.prototype.forward = function () {
-            var curMonth = this.currentMonth++;
+            var curMonth = this.currentMonth + 2;
             var curYear = this.currentYear;
             if (curMonth > 12) {
                 curMonth = 0;
@@ -97,7 +97,7 @@
             return new Calendar(curYear, curMonth);
         };
         Calendar.prototype.previous = function () {
-            var curMonth = this.currentMonth--;
+            var curMonth = this.currentMonth - 2;
             var curYear = this.currentYear;
             if (curMonth < 0) {
                 curMonth = 12;
@@ -106,7 +106,6 @@
             return new Calendar(curYear, curMonth);
         };
         Calendar.prototype.getMonthName = function (month) {
-            console.log("month- should be: " + month);
             switch (month) {
                 case 0:
                     return "January";
