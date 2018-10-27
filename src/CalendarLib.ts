@@ -15,7 +15,11 @@ export class Calendar {
 
     public FullCalendarData: Array<Array<number>> = new Array<Array<number>>();
 
-    constructor(year?: number, month?: number ){
+    constructor(year?: number, month?: number ) {
+
+        if (year.toString().length > 4) {
+            throw ("Your must pass a valid year as the 1st parameter");
+        }
 
         if (year === undefined){
             year = this.today.getFullYear();
@@ -27,11 +31,13 @@ export class Calendar {
         if (month === undefined) {
             month = this.today.getMonth();
             this.currentMonth = month - 1;
-            this.MonthName = Month[month - 1];
+            this.MonthName = this.getMonthName(this.currentMonth);
+
 
         } else {
             this.currentMonth = month - 1;
-            this.MonthName = Month[month - 1];
+            this.MonthName = this.getMonthName(this.currentMonth);
+
         }
 
         this.currentCalendarDate = new Date(this.currentYear, this.currentMonth, 1);
@@ -65,28 +71,28 @@ export class Calendar {
                 dayCounter++;
                 break;
             }
-            else{
+            else {
                 this.WeekCalendarData.push(padding);
             }
         }
-        
+
         // get WeekCalendar Counter
        // Fill Remaining Array with the days
-       var currentArrayCounter = this.WeekCalendarData.length;
-       
-       for(let x = 0; x < totalDaysInWeek - currentArrayCounter; x++){
+       let currentArrayCounter = this.WeekCalendarData.length;
+
+       for (let x = 0; x < totalDaysInWeek - currentArrayCounter; x++){
            this.WeekCalendarData.push(dayCounter);
            dayCounter++;
        }
-       
+
        this.FullCalendarData.push(this.WeekCalendarData);
-       
-       while(dayCounter <= this.numberOfDaysinMonth){
+
+       while (dayCounter <= this.numberOfDaysinMonth) {
             let tempWeekData: Array<number> = [];
-            
-            for(let b = 0; b < totalDaysInWeek; b++){
+
+            for (let b = 0; b < totalDaysInWeek; b++){
                 // Add Days to Array
-                if (dayCounter > this.numberOfDaysinMonth){
+                if (dayCounter > this.numberOfDaysinMonth) {
                     break;
                 }
                 tempWeekData.push(dayCounter);
@@ -94,13 +100,12 @@ export class Calendar {
             }
             this.FullCalendarData.push(tempWeekData);
        }
-       if (this.FullCalendarData[this.FullCalendarData.length -1].length < totalDaysInWeek){
-           while(this.FullCalendarData[this.FullCalendarData.length -1].length < totalDaysInWeek){
-               this.FullCalendarData[this.FullCalendarData.length -1].push(0);
+       if (this.FullCalendarData[this.FullCalendarData.length - 1].length < totalDaysInWeek) {
+           while (this.FullCalendarData[this.FullCalendarData.length - 1].length < totalDaysInWeek)
+           {
+               this.FullCalendarData[this.FullCalendarData.length - 1].push(0);
            }
        }
-       
-       
        return this.FullCalendarData;
     }
 
@@ -128,6 +133,47 @@ export class Calendar {
         }
 
         return new Calendar(curYear, curMonth);
+    }
+
+    private getMonthName(month: number): string {
+
+        switch (month) {
+            case 0:
+            return "January";
+
+            case 1:
+            return "February";
+
+            case 2:
+            return "March";
+
+            case 3:
+            return "April";
+
+            case 4:
+            return "May";
+
+            case 5:
+            return "June";
+
+            case 6:
+            return "July";
+
+            case 7:
+            return "August";
+
+            case 8:
+            return "September";
+
+            case 9:
+            return "October";
+
+            case 10:
+            return "November";
+
+            case 11:
+            return "December";
+        }
     }
 
 }
