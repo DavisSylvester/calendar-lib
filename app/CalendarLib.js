@@ -1,113 +1,100 @@
-System.register(["./index"], function (exports_1, context_1) {
+define(["require", "exports", "./index"], function (require, exports, index_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
-    var index_1, Calendar;
-    return {
-        setters: [
-            function (index_1_1) {
-                index_1 = index_1_1;
+    Object.defineProperty(exports, "__esModule", { value: true });
+    class Calendar {
+        constructor(year, month) {
+            this.today = new Date();
+            this.WeekCalendarData = new Array();
+            this.FullCalendarData = new Array();
+            if (year === undefined) {
+                year = this.today.getFullYear();
+                this.currentYear = year;
             }
-        ],
-        execute: function () {
-            Calendar = /** @class */ (function () {
-                function Calendar(year, month) {
-                    this.today = new Date();
-                    this.WeekCalendarData = new Array();
-                    this.FullCalendarData = new Array();
-                    if (year === undefined) {
-                        year = this.today.getFullYear();
-                        this.currentYear = year;
-                    }
-                    else {
-                        this.currentYear = year;
-                    }
-                    if (month === undefined) {
-                        month = this.today.getMonth();
-                        this.currentMonth = month - 1;
-                        this.MonthName = index_1.Month[month - 1];
-                    }
-                    else {
-                        this.currentMonth = month - 1;
-                        this.MonthName = index_1.Month[month - 1];
-                    }
-                    this.currentCalendarDate = new Date(this.currentYear, this.currentMonth, 1);
-                    // console.log('Working Month: ' + this.currentCalendarDate);
-                    this.numberOfDaysinMonth = this.GetNumberOfDaysInMonth(this.currentYear, this.currentMonth);
-                    this.firstDayOfMonth = this.GetFirstDayOfMonth();
-                    this.FullCalendarData = this.BuildWeekCalendar();
-                    // this.MonthName = Month[month - 1];
-                }
-                Calendar.prototype.GetNumberOfDaysInMonth = function (year, month) {
-                    var x = new Date(year, month + 1, 0);
-                    return Number(x.getDate());
-                };
-                Calendar.prototype.GetFirstDayOfMonth = function () {
-                    var day = this.currentCalendarDate.getDay();
-                    return day;
-                };
-                Calendar.prototype.BuildWeekCalendar = function () {
-                    var totalDaysInWeek = 7;
-                    var padding = 0;
-                    var dayCounter = 1;
-                    for (var i = 0; i < totalDaysInWeek; i++) {
-                        if (i === this.firstDayOfMonth) {
-                            this.WeekCalendarData.push(dayCounter);
-                            dayCounter++;
-                            break;
-                        }
-                        else {
-                            this.WeekCalendarData.push(padding);
-                        }
-                    }
-                    // get WeekCalendar Counter 
-                    // Fill Remaining Array with the days
-                    var currentArrayCounter = this.WeekCalendarData.length;
-                    for (var x = 0; x < totalDaysInWeek - currentArrayCounter; x++) {
-                        this.WeekCalendarData.push(dayCounter);
-                        dayCounter++;
-                    }
-                    this.FullCalendarData.push(this.WeekCalendarData);
-                    while (dayCounter <= this.numberOfDaysinMonth) {
-                        var tempWeekData = [];
-                        for (var b = 0; b < totalDaysInWeek; b++) {
-                            // Add Days to Array
-                            if (dayCounter > this.numberOfDaysinMonth) {
-                                break;
-                            }
-                            tempWeekData.push(dayCounter);
-                            dayCounter++;
-                        }
-                        this.FullCalendarData.push(tempWeekData);
-                    }
-                    if (this.FullCalendarData[this.FullCalendarData.length - 1].length < totalDaysInWeek) {
-                        while (this.FullCalendarData[this.FullCalendarData.length - 1].length < totalDaysInWeek) {
-                            this.FullCalendarData[this.FullCalendarData.length - 1].push(0);
-                        }
-                    }
-                    return this.FullCalendarData;
-                };
-                Calendar.prototype.Forward = function () {
-                    var curMonth = this.currentMonth++;
-                    var curYear = this.currentYear;
-                    if (curMonth > 12) {
-                        curMonth = 0;
-                        curYear++;
-                    }
-                    return new Calendar(curYear, curMonth);
-                };
-                Calendar.prototype.Reverse = function () {
-                    var curMonth = this.currentMonth--;
-                    var curYear = this.currentYear;
-                    if (curMonth < 0) {
-                        curMonth = 12;
-                        curYear--;
-                    }
-                    return new Calendar(curYear, curMonth);
-                };
-                return Calendar;
-            }());
-            exports_1("Calendar", Calendar);
+            else {
+                this.currentYear = year;
+            }
+            if (month === undefined) {
+                month = this.today.getMonth();
+                this.currentMonth = month - 1;
+                this.MonthName = index_1.Month[month - 1];
+            }
+            else {
+                this.currentMonth = month - 1;
+                this.MonthName = index_1.Month[month - 1];
+            }
+            this.currentCalendarDate = new Date(this.currentYear, this.currentMonth, 1);
+            this.numberOfDaysinMonth = this.GetNumberOfDaysInMonth(this.currentYear, this.currentMonth);
+            this.firstDayOfMonth = this.GetFirstDayOfMonth();
+            this.FullCalendarData = this.BuildWeekCalendar();
         }
-    };
+        GetNumberOfDaysInMonth(year, month) {
+            let x = new Date(year, month + 1, 0);
+            return Number(x.getDate());
+        }
+        GetFirstDayOfMonth() {
+            let day = this.currentCalendarDate.getDay();
+            return day;
+        }
+        BuildWeekCalendar() {
+            let totalDaysInWeek = 7;
+            let padding = 0;
+            let dayCounter = 1;
+            for (let i = 0; i < totalDaysInWeek; i++) {
+                if (i === this.firstDayOfMonth) {
+                    this.WeekCalendarData.push(dayCounter);
+                    dayCounter++;
+                    break;
+                }
+                else {
+                    this.WeekCalendarData.push(padding);
+                }
+            }
+            // get WeekCalendar Counter
+            // Fill Remaining Array with the days
+            var currentArrayCounter = this.WeekCalendarData.length;
+            for (let x = 0; x < totalDaysInWeek - currentArrayCounter; x++) {
+                this.WeekCalendarData.push(dayCounter);
+                dayCounter++;
+            }
+            this.FullCalendarData.push(this.WeekCalendarData);
+            while (dayCounter <= this.numberOfDaysinMonth) {
+                let tempWeekData = [];
+                for (let b = 0; b < totalDaysInWeek; b++) {
+                    // Add Days to Array
+                    if (dayCounter > this.numberOfDaysinMonth) {
+                        break;
+                    }
+                    tempWeekData.push(dayCounter);
+                    dayCounter++;
+                }
+                this.FullCalendarData.push(tempWeekData);
+            }
+            if (this.FullCalendarData[this.FullCalendarData.length - 1].length < totalDaysInWeek) {
+                while (this.FullCalendarData[this.FullCalendarData.length - 1].length < totalDaysInWeek) {
+                    this.FullCalendarData[this.FullCalendarData.length - 1].push(0);
+                }
+            }
+            return this.FullCalendarData;
+        }
+        forward() {
+            let curMonth = this.currentMonth++;
+            let curYear = this.currentYear;
+            if (curMonth > 12) {
+                curMonth = 0;
+                curYear++;
+            }
+            return new Calendar(curYear, curMonth);
+        }
+        previous() {
+            let curMonth = this.currentMonth--;
+            let curYear = this.currentYear;
+            if (curMonth < 0) {
+                curMonth = 12;
+                curYear--;
+            }
+            return new Calendar(curYear, curMonth);
+        }
+    }
+    exports.Calendar = Calendar;
 });
 //# sourceMappingURL=CalendarLib.js.map

@@ -1,6 +1,6 @@
 {
   "name": "tsg-calendar-lib",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "A Calendar Generator. Generates a calendar array from a given month and year",
   "main": "app/index.js",
   "scripts": {

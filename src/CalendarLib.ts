@@ -1,63 +1,65 @@
 import { Month } from "./index";
 
 export class Calendar {
-    
+
     private today: Date = new Date();
     private currentDate: Date;
     private currentCalendarDate: Date;
     private currentYear: number;
     private currentMonth: number;
     private numberOfDaysinMonth: number;
-    private firstDayOfMonth: number;    
+    private firstDayOfMonth: number;
     private WeekCalendarData: Array<number> = new Array<number>();
     public MonthName: string;
-    
+
+
     public FullCalendarData: Array<Array<number>> = new Array<Array<number>>();
-            
-    constructor(year?: number, month?: number ){        
-        
-        if(year === undefined){
+
+    constructor(year?: number, month?: number ){
+
+        if (year === undefined){
             year = this.today.getFullYear();
-            this.currentYear = year;            
-        }else{
+            this.currentYear = year;
+        } else {
             this.currentYear = year;
         }
-        
-        if(month === undefined){
+
+        if (month === undefined) {
             month = this.today.getMonth();
             this.currentMonth = month - 1;
             this.MonthName = Month[month - 1];
 
-        }else{
+        } else {
             this.currentMonth = month - 1;
             this.MonthName = Month[month - 1];
         }
+
         this.currentCalendarDate = new Date(this.currentYear, this.currentMonth, 1);
-        // console.log('Working Month: ' + this.currentCalendarDate);
+
         this.numberOfDaysinMonth = this.GetNumberOfDaysInMonth(this.currentYear, this.currentMonth);
         this.firstDayOfMonth = this.GetFirstDayOfMonth();
-        
+
         this.FullCalendarData = this.BuildWeekCalendar();
-        // this.MonthName = Month[month - 1];
+
     }
-    
-    
-    GetNumberOfDaysInMonth(year:number, month:number):number{
+
+
+    public GetNumberOfDaysInMonth(year: number, month: number): number {
         let x =  new Date(year, month + 1, 0);
         return Number(x.getDate());
     }
-    
-    GetFirstDayOfMonth():number{
+
+    public GetFirstDayOfMonth(): number{
         let day = this.currentCalendarDate.getDay();
         return day;
     }
-    
-    BuildWeekCalendar():Array<Array<number>>{
+
+    private BuildWeekCalendar(): Array<Array<number>>{
         let totalDaysInWeek = 7;
         let padding = 0;
         let dayCounter = 1;
-        
-        for(let i = 0; i < totalDaysInWeek; i++){
+
+        for (let i = 0; i < totalDaysInWeek; i++){
             if (i === this.firstDayOfMonth){
                 this.WeekCalendarData.push(dayCounter);
                 dayCounter++;
@@ -68,7 +70,7 @@ export class Calendar {
             }
         }
         
-        // get WeekCalendar Counter 
+        // get WeekCalendar Counter
        // Fill Remaining Array with the days
        var currentArrayCounter = this.WeekCalendarData.length;
        
@@ -101,8 +103,8 @@ export class Calendar {
        
        return this.FullCalendarData;
     }
-    
-    Forward(): Calendar {
+
+    public forward(): Calendar {
         let curMonth = this.currentMonth++;
         let curYear = this.currentYear;
 
@@ -115,7 +117,7 @@ export class Calendar {
         return new Calendar(curYear, curMonth);
     }
 
-    Reverse(): Calendar { 
+    public previous(): Calendar {
         let curMonth = this.currentMonth--;
         let curYear = this.currentYear;
 
@@ -127,8 +129,7 @@ export class Calendar {
 
         return new Calendar(curYear, curMonth);
     }
-    
-    
+
 }
 
 
