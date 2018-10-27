@@ -15,15 +15,10 @@ export class Calendar {
 
     public FullCalendarData: Array<Array<number>> = new Array<Array<number>>();
 
-    constructor(year?: number, month?: number ) {
+    constructor(year: number = null, month: number = null ) {
 
-        if (year !== null) {
-        if (year.toString().length > 4) {
-            throw ("Your must pass a valid year as the 1st parameter");
-        }
-    }
 
-        if (year === undefined){
+        if (year === undefined) {
             year = this.today.getFullYear();
             this.currentYear = year;
         } else {
@@ -111,7 +106,7 @@ export class Calendar {
        return this.FullCalendarData;
     }
 
-    public forward(): Calendar {
+    public next(): Calendar {
         let curMonth = this.currentMonth + 2;
         let curYear = this.currentYear;
 

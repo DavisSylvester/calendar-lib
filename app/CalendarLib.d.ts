@@ -13,7 +13,7 @@ export declare class Calendar {
     GetNumberOfDaysInMonth(year: number, month: number): number;
     GetFirstDayOfMonth(): number;
     private BuildWeekCalendar;
-    forward(): Calendar;
+    next(): Calendar;
     previous(): Calendar;
     private getMonthName;
 }

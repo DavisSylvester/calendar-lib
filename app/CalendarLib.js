@@ -2,14 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var Calendar = /** @class */ (function () {
     function Calendar(year, month) {
+        if (year === void 0) { year = null; }
+        if (month === void 0) { month = null; }
         this.today = new Date();
         this.WeekCalendarData = new Array();
         this.FullCalendarData = new Array();
-        if (year !== null) {
-            if (year.toString().length > 4) {
-                throw ("Your must pass a valid year as the 1st parameter");
-            }
-        }
         if (year === undefined) {
             year = this.today.getFullYear();
             this.currentYear = year;
@@ -80,7 +77,7 @@ var Calendar = /** @class */ (function () {
         }
         return this.FullCalendarData;
     };
-    Calendar.prototype.forward = function () {
+    Calendar.prototype.next = function () {
         var curMonth = this.currentMonth + 2;
         var curYear = this.currentYear;
         if (curMonth > 12) {
