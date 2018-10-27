@@ -18,14 +18,14 @@ export class Calendar {
     constructor(year: number = null, month: number = null ) {
 
 
-        if (year === undefined) {
+        if (year === null) {
             year = this.today.getFullYear();
             this.currentYear = year;
         } else {
             this.currentYear = year;
         }
 
-        if (month === undefined) {
+        if (month === null) {
             month = this.today.getMonth();
             this.currentMonth = month - 1;
             this.MonthName = this.getMonthName(this.currentMonth);

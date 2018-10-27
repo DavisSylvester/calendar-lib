@@ -7,14 +7,14 @@ var Calendar = /** @class */ (function () {
         this.today = new Date();
         this.WeekCalendarData = new Array();
         this.FullCalendarData = new Array();
-        if (year === undefined) {
+        if (year === null) {
             year = this.today.getFullYear();
             this.currentYear = year;
         }
         else {
             this.currentYear = year;
         }
-        if (month === undefined) {
+        if (month === null) {
             month = this.today.getMonth();
             this.currentMonth = month - 1;
             this.MonthName = this.getMonthName(this.currentMonth);
