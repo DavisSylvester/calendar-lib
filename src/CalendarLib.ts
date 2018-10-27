@@ -17,9 +17,11 @@ export class Calendar {
 
     constructor(year?: number, month?: number ) {
 
+        if (year !== null) {
         if (year.toString().length > 4) {
             throw ("Your must pass a valid year as the 1st parameter");
         }
+    }
 
         if (year === undefined){
             year = this.today.getFullYear();
@@ -123,7 +125,8 @@ export class Calendar {
     }
 
     public previous(): Calendar {
-        let curMonth = this.currentMonth - 2;
+
+        let curMonth = this.currentMonth;
         let curYear = this.currentYear;
 
 

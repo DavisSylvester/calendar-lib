@@ -5,8 +5,10 @@ var Calendar = /** @class */ (function () {
         this.today = new Date();
         this.WeekCalendarData = new Array();
         this.FullCalendarData = new Array();
-        if (year.toString().length > 4) {
-            throw ("Your must pass a valid year as the 1st parameter");
+        if (year !== null) {
+            if (year.toString().length > 4) {
+                throw ("Your must pass a valid year as the 1st parameter");
+            }
         }
         if (year === undefined) {
             year = this.today.getFullYear();
@@ -88,7 +90,7 @@ var Calendar = /** @class */ (function () {
         return new Calendar(curYear, curMonth);
     };
     Calendar.prototype.previous = function () {
-        var curMonth = this.currentMonth - 2;
+        var curMonth = this.currentMonth;
         var curYear = this.currentYear;
         if (curMonth < 0) {
             curMonth = 12;
