@@ -16,4 +16,5 @@ export declare class Calendar {
     next(): Calendar;
     previous(): Calendar;
     private getMonthName;
+    getWeekData(selectedDate?: number): Array<number> | null;
 }

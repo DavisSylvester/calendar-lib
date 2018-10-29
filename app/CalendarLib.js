@@ -90,8 +90,12 @@ var Calendar = /** @class */ (function () {
         var curMonth = this.currentMonth;
         var curYear = this.currentYear;
         if (curMonth < 0) {
+            console.log("curMonth: " + curMonth);
             curMonth = 12;
             curYear--;
+            this.MonthName = this.getMonthName(this.currentMonth);
+            console.log("curMonth: " + curMonth);
+            console.log("Month: " + this.MonthName);
         }
         return new Calendar(curYear, curMonth);
     };
@@ -122,6 +126,20 @@ var Calendar = /** @class */ (function () {
             case 11:
                 return "December";
         }
+    };
+    Calendar.prototype.getWeekData = function (selectedDate) {
+        if (selectedDate === void 0) { selectedDate = null; }
+        if (selectedDate === null) {
+            selectedDate = new Date().getDate();
+        }
+        for (var i = 0; i < this.FullCalendarData.length; i++) {
+            for (var x = 0; x < this.FullCalendarData[i].length; x++) {
+                if (this.FullCalendarData[i][x] === selectedDate) {
+                    return this.FullCalendarData[i];
+                }
+            }
+        }
+        return null;
     };
     return Calendar;
 }());

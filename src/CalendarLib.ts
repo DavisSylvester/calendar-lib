@@ -125,9 +125,13 @@ export class Calendar {
         let curYear = this.currentYear;
 
 
-        if (curMonth < 0){
+        if (curMonth < 0) {
+            console.log(`curMonth: ${curMonth}`);
             curMonth = 12;
             curYear--;
+            this.MonthName = this.getMonthName(this.currentMonth);
+            console.log(`curMonth: ${curMonth}`);
+            console.log(`Month: ${ this.MonthName}`);
         }
 
         return new Calendar(curYear, curMonth);
@@ -172,6 +176,25 @@ export class Calendar {
             case 11:
             return "December";
         }
+    }
+
+    public getWeekData(selectedDate: number = null): Array<number>|null {
+
+        if (selectedDate === null) {
+            selectedDate = new Date().getDate();
+        }
+
+        for (let i = 0; i < this.FullCalendarData.length; i++) {
+
+            for (let x = 0; x < this.FullCalendarData[i].length; x++) {
+
+                if (this.FullCalendarData[i][x] === selectedDate) {
+                    return this.FullCalendarData[i];
+                }
+            }
+        }
+
+        return null;
     }
 
 }

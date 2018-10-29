@@ -27,3 +27,5 @@ Result:
 forward() ->  returns and Array with the data for the next Month
 
 previous() -> returns and Array with the data for the previous Month
+
+getWeekData(dayNumber) -> returns and Array with the data for that week
