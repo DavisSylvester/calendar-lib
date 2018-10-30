@@ -16,7 +16,7 @@ var Calendar = /** @class */ (function () {
         }
         if (month === null) {
             month = this.today.getMonth();
-            this.currentMonth = month - 1;
+            this.currentMonth = month;
             this.MonthName = this.getMonthName(this.currentMonth);
         }
         else {
