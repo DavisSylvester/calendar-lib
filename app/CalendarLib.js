@@ -28,6 +28,13 @@ var Calendar = /** @class */ (function () {
         this.firstDayOfMonth = this.GetFirstDayOfMonth();
         this.FullCalendarData = this.BuildWeekCalendar();
     }
+    Object.defineProperty(Calendar.prototype, "CurrentMonth", {
+        get: function () {
+            return this.currentMonth + 1;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Calendar.prototype.GetNumberOfDaysInMonth = function (year, month) {
         var x = new Date(year, month + 1, 0);
         return Number(x.getDate());

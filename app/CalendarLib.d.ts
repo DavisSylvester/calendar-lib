@@ -8,6 +8,7 @@ export declare class Calendar {
     private firstDayOfMonth;
     private WeekCalendarData;
     MonthName: string;
+    readonly CurrentMonth: number;
     FullCalendarData: Array<Array<number>>;
     constructor(year?: number, month?: number);
     GetNumberOfDaysInMonth(year: number, month: number): number;
