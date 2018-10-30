@@ -12,6 +12,10 @@ export class Calendar {
     private WeekCalendarData: Array<number> = new Array<number>();
     public MonthName: string;
 
+    get CurrentMonth() {
+        return this.currentMonth + 1;
+    }
+
 
     public FullCalendarData: Array<Array<number>> = new Array<Array<number>>();
 
