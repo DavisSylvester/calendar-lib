@@ -16,6 +16,10 @@ export class Calendar {
         return this.currentMonth + 1;
     }
 
+    get CurrentYear() {
+        return this.currentYear;
+    }
+
 
     public FullCalendarData: Array<Array<number>> = new Array<Array<number>>();
 
