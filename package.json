@@ -4,7 +4,7 @@
   "description": "A Calendar Generator. Generates a calendar array from a given month and year",
   "main": "app/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "clean-upgrade": "rm -rf node_modules && npm install"
   },
   "keywords": [
@@ -26,9 +26,9 @@
     "gulp-plumber": "^1.1.0",
     "gulp-sourcemaps": "^2.6.1",
     "gulp-typescript": "^3.2.2",
+    "jest": "^23.6.0",
     "jshint": "^2.9.5",
     "tslint": "^5.7.0",
     "typescript": "^2.5.2"
-    
   }
 }
