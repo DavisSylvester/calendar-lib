@@ -4,7 +4,7 @@
   "description": "A Calendar Generator. Generates a calendar array from a given month and year",
   "main": "app/index.js",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest --coverage --verbose",
     "clean-upgrade": "rm -rf node_modules && npm install"
   },
   "keywords": [

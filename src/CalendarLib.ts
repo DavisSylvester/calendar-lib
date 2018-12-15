@@ -115,13 +115,17 @@ export class Calendar {
     }
 
     public next(): Calendar {
-        let curMonth = this.currentMonth + 2;
+        this.currentMonth += 2;
+        let curMonth = this.currentMonth;
+        // let curMonth = this.currentMonth + 2;
         let curYear = this.currentYear;
 
 
         if (curMonth > 12){
             curMonth = 0;
             curYear++;
+            this.currentMonth = curMonth;
+            this.currentYear = curYear;
         }
 
         return new Calendar(curYear, curMonth);
@@ -137,11 +141,16 @@ export class Calendar {
             console.log(`curMonth: ${curMonth}`);
             curMonth = 12;
             curYear--;
+            this.currentMonth = curMonth;
+            this.currentYear = curYear;
+
             this.MonthName = this.getMonthName(this.currentMonth);
             console.log(`curMonth: ${curMonth}`);
             console.log(`Month: ${ this.MonthName}`);
         }
 
+        this.currentMonth = curMonth;
+        this.currentYear = curYear;
         return new Calendar(curYear, curMonth);
     }
 
