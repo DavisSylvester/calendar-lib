@@ -35,17 +35,25 @@ test("Substract Calendar by One Month", () => {
 
     let a = new Calendar(2018, 3);
 
-    console.log(`Current Month: ${a.CurrentMonth}\n Current Year: ${a.CurrentYear}`);
     a.previous();
-    console.log(`Current Month: ${a.CurrentMonth}\n Current Year: ${a.CurrentYear}`);
+
     expect(a.CurrentMonth === 2).toBe(true);
 
 });
 
 test("Substract Calendar by One Month in January", () => {
 
-    let a = new Calendar(2018, 0);
-    a.previous();
-    expect(a.CurrentMonth === 12 && a.CurrentYear === 2017).toBe(true);
+    let a = new Calendar(2018, 1);
+    let b = a.previous();
+
+    expect(b.CurrentMonth === 12 && b.CurrentYear === 2017).toBe(true);
+
+});
+
+test("Get Calendar Month Name after Substracting a Month", () => {
+
+    let a = new Calendar(2018, 4);
+    let b = a.previous();
+    expect(b.MonthName).toBe("March");
 
 });

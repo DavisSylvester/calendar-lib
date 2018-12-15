@@ -1,26 +1,34 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Calendar = /** @class */ (function () {
-    function Calendar(year, month) {
+    function Calendar(year, month, offsetApplied) {
         if (year === void 0) { year = null; }
         if (month === void 0) { month = null; }
+        if (offsetApplied === void 0) { offsetApplied = false; }
         this.today = new Date();
         this.WeekCalendarData = new Array();
         this.FullCalendarData = new Array();
-        if (year === null) {
-            year = this.today.getFullYear();
-            this.currentYear = year;
+        if (!offsetApplied) {
+            if (year === null) {
+                year = this.today.getFullYear();
+                this.currentYear = year;
+            }
+            else {
+                this.currentYear = year;
+            }
+            if (month === null) {
+                month = this.today.getMonth();
+                this.currentMonth = month;
+                this.MonthName = this.getMonthName(this.currentMonth);
+            }
+            else {
+                this.currentMonth = month - 1;
+                this.MonthName = this.getMonthName(this.currentMonth);
+            }
         }
         else {
-            this.currentYear = year;
-        }
-        if (month === null) {
-            month = this.today.getMonth();
             this.currentMonth = month;
-            this.MonthName = this.getMonthName(this.currentMonth);
-        }
-        else {
-            this.currentMonth = month - 1;
+            this.currentYear = year;
             this.MonthName = this.getMonthName(this.currentMonth);
         }
         this.currentCalendarDate = new Date(this.currentYear, this.currentMonth, 1);
@@ -31,6 +39,13 @@ var Calendar = /** @class */ (function () {
     Object.defineProperty(Calendar.prototype, "CurrentMonth", {
         get: function () {
             return this.currentMonth + 1;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Calendar.prototype, "CurrentYear", {
+        get: function () {
+            return this.currentYear;
         },
         enumerable: true,
         configurable: true
@@ -85,26 +100,34 @@ var Calendar = /** @class */ (function () {
         return this.FullCalendarData;
     };
     Calendar.prototype.next = function () {
-        var curMonth = this.currentMonth + 2;
+        this.currentMonth += 2;
+        var curMonth = this.currentMonth;
+        // let curMonth = this.currentMonth + 2;
         var curYear = this.currentYear;
         if (curMonth > 12) {
             curMonth = 0;
             curYear++;
+            this.currentMonth = curMonth;
+            this.currentYear = curYear;
+            return new Calendar(curYear, curMonth, true);
         }
-        return new Calendar(curYear, curMonth);
+        return new Calendar(curYear, curMonth, true);
     };
     Calendar.prototype.previous = function () {
         var curMonth = this.currentMonth;
         var curYear = this.currentYear;
-        if (curMonth < 0) {
-            console.log("curMonth: " + curMonth);
-            curMonth = 12;
+        if (curMonth <= 0) {
+            curMonth = 11;
             curYear--;
+            this.currentMonth = curMonth;
+            this.currentYear = curYear;
             this.MonthName = this.getMonthName(this.currentMonth);
-            console.log("curMonth: " + curMonth);
-            console.log("Month: " + this.MonthName);
+            return new Calendar(curYear, curMonth, true);
         }
-        return new Calendar(curYear, curMonth);
+        curMonth--;
+        this.currentMonth = curMonth;
+        this.currentYear = curYear;
+        return new Calendar(curYear, curMonth, true);
     };
     Calendar.prototype.getMonthName = function (month) {
         switch (month) {

@@ -8,6 +8,10 @@
         "outDir": "app/",
         "rootDir": "./src"
     },
+    "include": [
+        // "./src/CalendarLib.ts",
+        "./src/*.ts"
+    ],
     "exclude": [
         "node_modules"
     ]

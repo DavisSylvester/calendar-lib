@@ -9,8 +9,9 @@ export declare class Calendar {
     private WeekCalendarData;
     MonthName: string;
     readonly CurrentMonth: number;
+    readonly CurrentYear: number;
     FullCalendarData: Array<Array<number>>;
-    constructor(year?: number, month?: number);
+    constructor(year?: number, month?: number, offsetApplied?: boolean);
     GetNumberOfDaysInMonth(year: number, month: number): number;
     GetFirstDayOfMonth(): number;
     private BuildWeekCalendar;
