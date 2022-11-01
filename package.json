@@ -21,7 +21,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^24.0.18",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-jshint": "^2.1.0",
     "gulp-nodemon": "^2.4.2",
     "gulp-plumber": "^1.2.1",
